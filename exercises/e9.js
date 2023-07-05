@@ -13,7 +13,8 @@
 
 export function iterate(arg) {
   // Your code goes here...
-  
+  console.log(arg);
+  return arg += 1;
 }
 
 /**
@@ -24,6 +25,7 @@ export function iterate(arg) {
 
 export function alwaysThrows() {
   // Your code goes here...
+  throw Error('OH NOES');
 
 }
 
@@ -36,9 +38,9 @@ export function alwaysThrows() {
  * The function must be exported
  */
 
-export function onReject() {
+export function onReject(arg) {
   // Your code goes here...
-
+  arg.message ? console.log(arg.message) : console.log(arg);
 }
 
 /**
@@ -63,9 +65,19 @@ export function onReject() {
  */
 
 // Your code goes here...
-export const promise;
-
-
+export const promise = Promise.resolve(1)
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => alwaysThrows(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .then(data => iterate(data))
+  .catch(e => onReject(e));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-9"

@@ -31,14 +31,14 @@
  * The handlePromise() function must be exported
  */
 
- export const handlePromise = (promise) => {
+ export const handlePromise = (Promise) => {
   // Your code goes here...
-  const onFulfilled = (data) => data[0];
+  const onFulfilled = (data) => data;
   const onRejected = () => 'Uh Oh';
 
-  console.log(promise)
+  console.log(Promise)
 
-  return Promise.all([promise]).then(onFulfilled, onRejected);
+  return Promise.then(onFulfilled, onRejected);
 
 };
 
